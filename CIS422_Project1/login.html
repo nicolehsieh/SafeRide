@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Admin Login</title>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <!-- Custom styles for this template -->
+        <link href="starter-template.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>  <!--For mobile menu -->
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" >SafeRide</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="http://pages.uoregon.edu/saferide/aboutus.html">About</a></li>
+            <li><a href="http://pages.uoregon.edu/saferide/aboutus.html">Contact</a></li>
+            <li><a href="form.html">Form</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+              <li><a href="login.html">Log In</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>Admin Login</h1>
+        <br>
+        <form class="form-horizontal" role="form" action="view.php" method="POST">
+              <div class="form-group">
+                <label class="control-label col-sm-4 lead" for="username">Username:</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control lead" id="username" placeholder="Enter username">
+                </div>
+               </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-4 lead" for="password">Password:</label>
+                  <div class="col-sm-4">          
+                  <input type="password" class="form-control lead" id="password" placeholder="Enter password">
+                </div>
+              </div>
+              <div class="form-group">        
+                <div class=" col-sm-6 col-sm-offset-2">
+                  <div class="checkbox">
+                    <label><input type="checkbox">Remember me</label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">        
+                <div class="col-sm-offset-1 col-sm-10">
+                  <button type="submit" class="btn btn-default">Login</button>
+                </div>
+              </div>
+            </form>
+      </div>
+    </div><!-- /.container -->
+
+
+
+  </body>
+</html>

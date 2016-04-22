@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SafeRide Schedule</title>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link href="dashboard.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="http://pages.uoregon.edu/saferide/">Safe Ride</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="http://pages.uoregon.edu/saferide/aboutus.html">About</a></li>
+                        <li><a href="http://pages.uoregon.edu/saferide/aboutus.html">Contact</a></li>
+                        <li><a href="form.html">Form</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="logoff.html">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 col-md-2 sidebar">
+                    <ul class="nav nav-sidebar">
+                        <li><a href="view.php">Schedule</a></li>
+                        <li class="active"><a href="addNewRider.html">Add New Rider</a></li>
+                        
+                    </ul>
+                </div>
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                    <h1 class="page-header">Add New Rider Form</h1>
+                    <form class="form-horizontal" role="form" name="signupform" action="insert_dispatcher.php" method='POST'>
+                        <fieldset>
+                            <legend><span>1.</span> Riders Basic Info</legend>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="name">Full Name:</label>    
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="name" name="user_name" required="true" placeholder="Enter Full Name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="uoid">UO ID Number: </label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" maxlength="9" id="uoid" name="user_uoid" required="true" placeholder="Enter UO ID Number">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="mail">Email: </label>
+                                <div class="col-sm-8"> 
+                                    <input type="email" class="form-control" id="mail" name="user_email" required="true" placeholder="Enter Email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="phone">Phone Number: </label>
+                                <div class="col-sm-8"> 
+                                    <input type="text" class="form-control" maxlength="10" id="phone" name="user_phone" required="true" placeholder="Enter Phone Number">
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <br>
+
+                        <fieldset>
+                            <legend><span>2.</span> Scheduling Info</legend>
+                            
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="hour">Time Slots:</label>    
+                                
+                                <div class="col-sm-2">
+                                    <select class="form-control" id="hour" name="user_time[]" required="true">
+                                        <option value="" selected disabled>Hours</option>
+                                        <option value="18">6</option>
+                                        <option value="19">7</option>
+                                        <option value="20">8</option>
+                                        <option value="21">9</option>
+                                        <option value="22">10</option>
+                                        <option value="23">11</option>
+                                        <option value="00">12</option>
+                                        <option value="01">01</option>
+                                    </select>
+                                    <!-- <label id="time_label">:</label> -->
+                                </div>
+                                
+                                <div class="col-sm-2">
+                                    <select class="form-control" id="minute" name="user_time[]"required="true">
+                                        <option value="" selected disabled>Minutes</option>
+                                        <option value="00">00</option>  
+                                        <option value="15">15</option>
+                                        <option value="30">30</option>
+                                        <option value="45">45</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="party">Numbers of Riders:</label>
+                                
+                                <div class="radio col-sm-2">
+                                    <label><input type="radio" id="one" value="1" name="party_number">1 Rider</label>
+                                    <label><input type="radio" id="two" value="2" name="party_number">2 Riders</label>
+                                    <label><input type="radio" id="three" value="3" name="party_number">3 Riders</label>
+                                </div>
+                    
+                            </div>
+                        </fieldset>
+                        
+                        <br>
+                    
+                        <fieldset>
+                            <legend><span>3.</span> Locations Info</legend>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="pickup">Pick-up Address:</label>    
+                                <div class="col-sm-8">
+                                    <textarea type="text" class="form-control" id="pickup" name="user_pickup" placeholder="Enter Pick Up Address" required="true"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="location">Common Pick Up:</label>    
+                                
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="location" name="user_pickup" required="true">
+                                        <option value="" selected disabled>Pick a Location</option>
+                                        <optgroup label="On-Campus">
+                                            <option value="Deschutes">Deschutes</option>
+                                            <option value="Knight Library">Knight Library</option>
+                                            <option value="Science Library">Science Library</option>
+                                            <option value="Law Library">Law Library</option>
+                                            <option value="Recreation Center">Recreation Center</option>
+                                            <option value="Dorm">Dorm</option>
+                                        </optgroup>
+                                        <optgroup label="Off-Campus">
+                                            <option value="vrc">Valley River Center</option>
+                                            <option value="gateway">Gateway Mall</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="dropoff">Drop-Off Address:</label>    
+                                <div class="col-sm-8">
+                                    <textarea type="text" class="form-control" id="dropoff" name="user_dropoff" placeholder="Enter Drop off Address" required="true"></textarea>
+                                </div>
+                            </div>
+
+                            
+                        </fieldset>
+                        <br>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary" value="Submit Button">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+
