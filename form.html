@@ -123,7 +123,7 @@
                 <br>
             
                 <fieldset>
-                    <legend><span>3.</span> Locations Info</legend>
+                    <legend><span>3.</span> Location Info</legend>
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="pickup">Pick-up Address:</label>    
                         <div class="col-sm-8">
@@ -131,7 +131,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+<!--                     <div class="form-group">
                         <label class="control-label col-sm-2" for="location">Common Pick up:</label>    
                         <div class="col-sm-8">
                             <select class="form-control" id="location" name="user_dropoff" required="true">
@@ -150,7 +150,7 @@
                                 </optgroup>
                             </select>
                         </div>
-                    </div>
+                    </div> -->
 
 
                     <div class="form-group">
@@ -158,6 +158,7 @@
                         <div class="col-sm-8">
                             <textarea type="text" class="form-control" id="dropoff" name="user_dropoff" placeholder="Enter Drop off Address" required="true"></textarea>
                         </div>
+                        <button type="button" class="btn btn-info" id ="verify" value="verify" style="background-color: #85bae6; color: #fff; border: none;">Confirm Location</button>
                     </div>
 
                     
@@ -168,6 +169,7 @@
                 </div>
             </form>
         </div>
+        <div id="map" style="display:none;"></div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -177,8 +179,12 @@
     <script src="../../dist/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCilD8BQI6v0Dj-ZZOPZw3Hc59TXrLmdHE&libraries=places"></script>
+    <script src="geoValidator.js"></script>
   </body>
-  <hr>
+  <br>
+</br>
+<!--   <hr>
     <p>Copyright &copy; Nicole Hsieh 2016</p>    
-  <hr>
+  <hr> -->
 </html>
