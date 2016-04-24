@@ -1,0 +1,70 @@
+
+Week 1
+
+4/1
+	
+        •	Team meeting (about 20 minutes)
+
+        •	Team PowerPoint presentation on google slides 
+
+        •	Plan project, divide responsibilities (about 2 hours)
+
+
+Week 2
+
+4/3 – 4/5
+
+ 
+	•	Researched software development
+
+        •	Researched user forms, learned HTML and CSS (hardly ever done anything in web development other than the very first-ever meeting of Web Dev club)
+
+        •	Built user form front-end thing (about 6 hours)
+
+
+4/7	
+
+        •	Team meeting (about 30 minutes)
+
+
+Week 3
+
+4/15-4/17
+
+	•	Looked up how to do documentation, started outlining Software Requirements document (about 2 hours)
+
+Week 4
+
+4/18
+
+	•	Fix a few CSS-y things
+
+        •	Study all the code Nicole wrote during week 3
+
+        •	Research about PHP and SQL since Nicole decided to use those languages for the back-end  (about 5 hours)
+
+4/19
+
+	•	Change a few elements on front-end user form to better match the requirements (every 5 minutes instead of every hour, had to reorganize the form a bit)
+
+        •	Struggled with BitBucket, eventually just sent code to Nicole to commit without merge issues 
+
+        •	Try to figure out Edit button (spent about 7 hours)
+
+
+4/20	
+
+        •	Try to figure out Edit button (about 4 hours)
+
+
+4/21
+
+	•	Try to figure out Edit button (about 12 hours)
+
+        •	Work on documentation (about 1 hour)
+
+4/22
+
+	•	Worked on Documentation (about 2 hours)
+
+        •	Work on modify button – success! (about 3 hours)
