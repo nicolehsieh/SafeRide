@@ -9,6 +9,8 @@ $sql_con = new mysqli($server, $username, $password, $dbname, $port);
 if ($sql_con->connect_error) {
     die("Connection failed: ".$sql_con->connect_error);
 } 
+
+//$sql = 
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +58,7 @@ if ($sql_con->connect_error) {
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li class="active"><a href="view.php">Schedule</a></li>
+                        <li class="active"><a href="view-test.php">Schedule</a></li>
                         <li><a href="addNewRider.html">Add New Rider</a></li>
                     </ul>
                 </div>
@@ -110,20 +112,21 @@ if ($sql_con->connect_error) {
                                             echo "<tr class='danger' id = $counter>";
                                         }
                                         // echo "<td class='editable-col' col-index='0' id=0 >$id</td>"    
-                                        echo "<td class='editable-col' col-index='0' id=0 >$time_stamp</td>";
-                                        echo "<td class='editable-col' col-index='1' id=1 >$name</td>";
-                                        echo "<td class='editable-col' col-index='2' id=2 >$uoid</td>";
-                                        echo "<td class='editable-col' col-index='3' id=3 >$email</td>";
-                                        echo "<td class='editable-col' col-index='4' id=4 >$phone</td>";
-                                        echo "<td class='editable-col' col-index='5' id=5 >$pickup_time</td>";
-                                        echo "<td class='editable-col' col-index='6' id=6 >$party</td>";
-                                        echo "<td class='editable-col' col-index='7' id=7 >$pickup</td>";
-                                        echo "<td class='editable-col' col-index='8' id=9 >$dropoff</td>";  
-                                        echo "<td class='editable-col' col-index='9' id=9 >$comments</td>";
-                                        echo "<td class='editable-col' col-index='10' id=10 >$vehicle_no</td>";
+                                        echo "<td class='editable-col' col-index='0' name='0' >$time_stamp</td>";
+                                        echo "<td class='editable-col' col-index='1' name='1' >$name</td>";
+                                        echo "<td class='editable-col' col-index='2' name='2' >$uoid</td>";
+                                        echo "<td class='editable-col' col-index='3' name='3' >$email</td>";
+                                        echo "<td class='editable-col' col-index='4' name='4' >$phone</td>";
+                                        echo "<td class='editable-col' col-index='5' name='5' >$pickup_time</td>";
+                                        echo "<td class='editable-col' col-index='6' name='6' >$party</td>";
+                                        echo "<td class='editable-col' col-index='7' name='7' >$pickup</td>";
+                                        echo "<td class='editable-col' col-index='8' name='8' >$dropoff</td>";  
+                                        echo "<td class='editable-col' col-index='9' name='9' >$comments</td>";
+                                        echo "<td class='editable-col' col-index='10' name='10' >$vehicle_no</td>";
                                         echo "<td><button class='btn btn-default' id='editButton' onclick = foo('$counter')>Modify</button></td>";
+                                        echo "<td><button class='btn btn-default' id='saveButton' onclick = save('$counter')>Save</button></td>";
                                         // echo "<td><a href='delete_entry.php?id=$id'>Cancel Request</a></td>";
-                                        echo "<td><button type='button' class='btn btn-default' onclick='deleteRow($id)'>Cancel Request</button></td>";
+                                        echo "<td><button type='button' class='btn btn-default' onclick='deleteRow($id)'> X </button></td>";
                                         echo "</tr>";
                                         $counter++;
                                     }
@@ -140,37 +143,51 @@ if ($sql_con->connect_error) {
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
                 <script>
                  function foo(arg){
-                    var row = document.getElementById(arg);
+                 	console.log('Button clicked  ' + arg);
+	                var row = document.getElementById(arg);
                     var ebutt = document.getElementById('editButton');
+
+                    console.log('row: ' + row);
+
                     row.contentEditable = true;
+                    //console.log('Made it past the contentEditable thing');
                     ebutt.contentEditable = false;
-                    //ebutt.value="Save";    //###########can't figure out name of button text property##########
                     row.focus();
                     
-                    var indexArray = [];
-                    for (i = 0; i<12; i++){
+                 }
+                 
+                 function save(arg){
+                 	var row = document.getElementById(arg);
+                 	row.contentEditable = false;
+                 	
+                 	
+                 	var indexArray = [];
+                    for (i = 0; i<11; i++){
                         indexArray[i] = i;
                     }
                     
                     $(document).ready(function(){
-                        $(row).on('focusout', function() {
+                        //$(row).on('focusout', function() {
                             $.each(indexArray, function(ind, value){
+                                var cells = document.getElementsByName(value);
+                                var element = cells[arg];
+                                
                                 data = {};
-                                data['val'] = $("#" + value).text();
+                                data['val'] = $(element).text();
+                                //console.log("data val: ");
                                 //console.log(data['val']);
                                 data['id'] = arg;
-                                //FIXTHISSSJENNYYYYYYYAHAHASKJADFSJKL;ASDLKFADSJL;AFSDJAFSDK
                                 //console.log(data['id']);
-                                data['index'] = $("#" + value).attr('col-index');
-                                
+                                data['index'] = $(element).attr('name');
+                                //console.log(data['index']);
+                                debugger;
                                 $.ajax({   
                                   type: "POST",  
-                                  url: "update.php",  
+                                  url: "update.php", 
                                   cache:false,  
                                   data: data,
-                                  dataType: "json",      
+                                  dataType: "json",     
                                   
-                                  /*
                                   success: function(response)  
                                   {   
                                     if(response.status) {
@@ -180,18 +197,19 @@ if ($sql_con->connect_error) {
                                       $("#msg").removeClass('alert-success');
                                       $("#msg").addClass('alert-danger').html(response.msg);
                                     }
-                                  } */
-                                });
+                                  },
+                                  error: function(response)
+                                  {
+                                  debugger;
+                                  }
+                                });   
+                                //console.log(JSON.stringify("#msg"));
                             });
-                            
-                            
-                            //alert(1);
-                            
-                        });
                     });
-                    row.onfocusout = function() {
-                        this.contentEditable = false;
-                    }
+                 	
+                 	
+                 	
+                 	
                  }
                 </script>
                 
